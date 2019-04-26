@@ -17,7 +17,7 @@ export const FormField = ({
   const hasError = touched[uid] && errors[uid]
 
   return (
-    <div className={`form-field ${hasError ? 'form-field__has-error' : ''}`}>
+    <div className={`form-field ${hasError ? 'form-field--has-error' : ''}`}>
       <label htmlFor={uid}>
         {label && <span className="form-field__label">{label}</span>}
         <input

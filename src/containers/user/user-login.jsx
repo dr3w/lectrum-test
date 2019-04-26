@@ -57,7 +57,7 @@ export const UserLoginView = ({ handleSubmitAction }) => {
         handleSubmit,
         isSubmitting
       }) => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form">
           <FormField
             placeholder="Email"
             uid={FORM_FIELDS_NAMES.EMAIL}
@@ -93,7 +93,7 @@ export const UserLoginView = ({ handleSubmitAction }) => {
 }
 
 UserLoginView.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmitAction: PropTypes.func.isRequired
 }
 
 const mapStateToProps = createStructuredSelector({

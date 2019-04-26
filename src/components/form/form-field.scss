@@ -1,5 +1,13 @@
 @import '~common/const-styles';
 
+.form {
+  padding: 10px;
+}
+
 .form-field  {
-  background: $dark-50;
+  padding: 0 0 5px;
+
+  &--has-error input {
+    border-color: $red;
+  }
 }
