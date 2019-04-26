@@ -6,7 +6,7 @@ import { LOGIN, REGISTER } from 'common/const-routes'
 
 export const Header = () => (
   <div className="header">
-    <ul className="header-menu">
+    <ul className="header__menu">
       <li><Link to={`/${LOGIN}`}>login</Link></li>
       <li><Link to={`/${REGISTER}`}>sign up</Link></li>
     </ul>

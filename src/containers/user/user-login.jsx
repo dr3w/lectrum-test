@@ -1,13 +1,24 @@
 import React, { useCallback } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { createStructuredSelector } from 'reselect'
+import { bindActionCreators } from 'redux'
 import { Formik } from 'formik'
 import { FormField } from 'components/form/form-field'
+import { meLoginActions } from 'store/me/actions'
+import { baseSelector } from 'store/me/selectors'
 
 const FORM_FIELDS_NAMES = {
   EMAIL: 'email',
   PASSWORD: 'password'
 }
 
-export const UserLogin = () => {
+export const UserLoginView = ({ handleSubmitAction }) => {
+  const initialValues = {
+    [FORM_FIELDS_NAMES.EMAIL]: 'a123123@a.com', // TODO: remove
+    [FORM_FIELDS_NAMES.PASSWORD]: '12345' // TODO: remove
+  }
+
   const validate = useCallback((values) => {
     const errors = {}
 
@@ -27,15 +38,12 @@ export const UserLogin = () => {
   }, [])
 
   const onSubmit = useCallback((values, { setSubmitting }) => {
-    console.log('submit', values, setSubmitting)
-  }, [])
+    handleSubmitAction(values)
+  }, [handleSubmitAction])
 
   return (
     <Formik
-      initialValues={{
-        [FORM_FIELDS_NAMES.EMAIL]: '',
-        [FORM_FIELDS_NAMES.PASSWORD]: ''
-      }}
+      initialValues={initialValues}
       validate={validate}
       onSubmit={onSubmit}
       noValidate
@@ -83,3 +91,17 @@ export const UserLogin = () => {
     </Formik>
   )
 }
+
+UserLoginView.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+}
+
+const mapStateToProps = createStructuredSelector({
+  data: baseSelector
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  handleSubmitAction: meLoginActions.request
+}, dispatch)
+
+export const UserLogin = connect(mapStateToProps, mapDispatchToProps)(UserLoginView)

@@ -1,5 +1,14 @@
 @import '~common/const-styles';
 
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
   background: $dark-25;
+
+  &__menu li {
+    display: inline-block;
+    margin: 0 5px;
+  }
 }

@@ -19,9 +19,9 @@ export const FormField = ({
   return (
     <div className={`form-field ${hasError ? 'form-field__has-error' : ''}`}>
       <label htmlFor={uid}>
-        {label && <span className="form-field--label">{label}</span>}
+        {label && <span className="form-field__label">{label}</span>}
         <input
-          className="form-field--input"
+          className="form-field__input"
           placeholder={placeholder}
           type={type}
           id={uid}
@@ -32,7 +32,7 @@ export const FormField = ({
         />
       </label>
       {
-        hasError && <div className="form-field--error">{errors[uid]}</div>
+        hasError && <div className="form-field__error">{errors[uid]}</div>
       }
     </div>
   )
